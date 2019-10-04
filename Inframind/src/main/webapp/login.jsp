@@ -3,11 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page import="java.sql.*"%>
 <%
+	String ip=System.getenv("MYSQL_SERVICE_HOST");
+	String port=System.getenv("MYSQL_SERVICE_PORT");
+	ip=(ip==null)?"localhost":ip;
+	port=(port==null)?"3306":port;
     String userName = request.getParameter("userName");  
 	out.println(userName);
     String password = request.getParameter("password");
     Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://hello:3306/sofia","root","DSB@123");
+    Connection con = DriverManager.getConnection("jdbc:mysql://"+ip+":"+port+"/sofia","root","DSB@123");
     Statement st = con.createStatement();
     ResultSet rs;
     rs = st.executeQuery("select * from inframind_login where username='" + "Dhanashree" + "' and password='" +"DSB@123"+ "'");
