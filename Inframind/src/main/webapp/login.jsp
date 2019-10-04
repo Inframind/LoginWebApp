@@ -11,7 +11,7 @@
 	out.println(userName);
     String password = request.getParameter("password");
     Class.forName("com.mysql.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://"+ip+":"+port+"/sofia","root","DSB@123");
+    Connection con = DriverManager.getConnection("jdbc:mysql://"+ip+":"+port+"/abc","root","DSB@123");
     Statement st = con.createStatement();
     ResultSet rs;
     rs = st.executeQuery("select * from inframind_login where username='" + "Dhanashree" + "' and password='" +"DSB@123"+ "'");
