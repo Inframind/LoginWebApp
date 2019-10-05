@@ -5,17 +5,14 @@
 <body>
 <%@ page import="java.sql.*"%>
 <%
-String ip=System.getenv("MYSQL_SERVICE_HOST");
-String port=System.getenv("MYSQL_SERVICE_PORT");
-ip=(ip==null)?"localhost":ip;
-port=(port==null)?"3306":port;
+
 String userName = request.getParameter("userName");
 String password = request.getParameter("password");
 String firstName = request.getParameter("firstName");
 String lastName = request.getParameter("lastName");
 String email = request.getParameter("email");
 Class.forName("com.mysql.jdbc.Driver");
-Connection con = DriverManager.getConnection("jdbc:mysql://"+ip+":"+port+"/abc","root","DSB@123");
+Connection con = DriverManager.getConnection("jdbc:mysql://hello:3306/abc","root","DSB@123");
 Statement st = con.createStatement();
 int i = st.executeUpdate("insert into inframind_login(first_name, last_name, email, username, password, regdate) values ('" + firstName + "','"
 + lastName + "','" + email + "','" + userName + "','" + password + "', CURDATE())");
